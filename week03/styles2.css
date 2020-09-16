@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img {
+    width:  600px;
+    height: 300px;
+}
+
+body {
+    background: url(/dist/img/tech.jpg);
+}
+
+figure {
+    border: grey;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    max-width: 612px;
+    margin: auto;
+}
+
+
+figcaption {
+    background-color: indigo;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    margin: auto;
+    text-align: center;
+}
+
+details {
+    border: 1px solid blue;
+    border-radius: 4px;
+    text-align: center;
+    width: 600px
+}
+
+summary {
+    font-weight: bold;
+    padding: .5em;
+    text-align: center;
+    width: 600px;
+}
+
+details[open] {
+    text-align: center;
+    width: 600px;
+}
+
+details[open] summary {
+    border-bottom: px solid blue; 
+    text-align: center;
+    width: 600px;
+}
