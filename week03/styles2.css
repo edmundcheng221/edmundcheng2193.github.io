@@ -9,7 +9,7 @@ img {
 }
 
 body {
-    background: url(/dist/img/tech.jpg);
+    background: url(../img/tech.jpg);
 }
 
 figure {
