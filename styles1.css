@@ -5,10 +5,12 @@ div img {
     margin: auto;
 }
 
-
+body {
+    background-color: lightblue;
+}
 
 footer {
-    background-color: white;
+    background-color:lightblue;
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
