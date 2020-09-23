@@ -46,3 +46,11 @@ ul li a {
     height: 100%;
  
 }
+
+.intro {
+    text-align: center;
+    margin: 20px;
+    margin-left: 300px;
+    margin-right: 300px;
+    
+}

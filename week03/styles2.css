@@ -56,3 +56,26 @@ details[open] summary {
     width: 600px;
 }
 
+
+.topnav {
+    overflow: hidden;
+    background-color:black;
+  }
+  
+  .topnav a {
+    float: right;
+    color: whitesmoke;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color:blue;
+  }
+
+body {
+    margin: 0;
+}

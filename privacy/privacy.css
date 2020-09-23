@@ -1,6 +1,13 @@
+* {
+    padding: 0;
+    /* margin: 0; */
+    box-sizing: border-box;
+}
+
 body {
     background-color: lightblue;
 }
+
 .topnav {
     overflow: hidden;
     background-color:black;
@@ -23,3 +30,7 @@ body {
 body {
     margin: 0;
 }
+.priv {
+    margin: 5px;
+    font-family: 'Times New Roman', Times, serif;
+  }
