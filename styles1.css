@@ -12,6 +12,7 @@ div img {
 
 body {
     background-color: lightblue;
+    
 }
 
 footer {
@@ -20,16 +21,24 @@ footer {
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
+    
 
 }
 
 ul {
-    display: flexbox;
+    display: flex;
     margin: 0;
+    /* width: 200px; */
+    /* text-align: center; */
+    /* height: 50%;
+    width: 7%;
+    margin: auto; */
+    /* transform: translateX(-145%) */
+    
 
 }
 ul li {
-    display: inline-block;
+    display: block;
     background-color: royalblue;
     padding: 12px 16px;
     margin: 0 4px;
@@ -49,8 +58,8 @@ ul li a {
 
 .intro {
     text-align: center;
-    margin: 20px;
-    margin-left: 300px;
-    margin-right: 300px;
+    /* margin: 20px; */
+    /* margin-left: 300px; */
+    /* margin-right: 300px; */
     
 }
