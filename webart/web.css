@@ -1,0 +1,64 @@
+
+* {
+    padding: 0;
+    /* margin: 0; */
+    box-sizing: border-box;
+    
+}
+
+
+div img {
+    display: block;
+    width:  400px;
+    height: auto;
+    margin: auto;
+   
+}
+/* .title {
+    display: block;
+    margin-left: 300px;
+} */
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+header {
+
+    background-image: url('../webart/webimg/grass.jpg');
+    height: 400px;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.description {
+    display: block;
+    margin: auto;
+    /* text-align: center; */
+    width: 40em;
+    position: static;
+
+}
+
+.new {
+    background-color: lightgoldenrodyellow;
+
+}
+#games {
+    background-color: lightgreen;
+}
+
+
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: DodgerBlue; */
+    justify-content: space-evenly;
+  }
