@@ -1,0 +1,17 @@
+body {
+    background-image: url('images/siliconvalley.jpg');
+    color: white;
+    font-size: large;
+    font-weight: 500;
+}
+div {
+    background-color: black;
+    margin: auto;
+    width: 700px;
+}
+
+img {
+    display: block;
+    margin-left: 450px;
+    padding: 5px;
+}
