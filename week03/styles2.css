@@ -3,21 +3,30 @@
     margin: 0;
     box-sizing: border-box;
 }
-img {
+/* img {
+    display: block;
     width:  600px;
     height: 300px;
-}
 
+    
+} */
+.image {
+    width: 600px;
+    height: 300px;
+
+}
+header {
+    background-color: bisque;
+}
 body {
     background: url(../img/tech.jpg);
 }
 
 figure {
-    border: grey;
     display: flex;
+    border: grey;
     flex-flow: column;
-    padding: 5px;
-    max-width: 612px;
+    /* padding: 5px; */
     margin: auto;
 }
 
@@ -28,6 +37,8 @@ figcaption {
     font: italic smaller sans-serif;
     padding: 3px;
     margin: auto;
+    max-width: 600px;
+
     text-align: center;
 }
 
@@ -57,25 +68,9 @@ details[open] summary {
 }
 
 
-.topnav {
-    overflow: hidden;
-    background-color:black;
-  }
-  
-  .topnav a {
-    float: right;
-    color: whitesmoke;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
-    color:blue;
-  }
-
 body {
     margin: 0;
 }
+
+
+
