@@ -151,3 +151,23 @@ span.psw {
     display: flex;
     justify-content: center;
 }
+
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+  }
+  
+.column {
+    flex-basis: 100%;
+  }
+  
+@media screen and (min-width: 800px) {
+.column {
+    flex: 1;
+
+}
+}
