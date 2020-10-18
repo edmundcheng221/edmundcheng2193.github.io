@@ -165,20 +165,14 @@ span.psw {
     flex-basis: 100%;
   }
   
-/* @media screen and (min-width: 800px) {
-.column {
-    flex: 1;
 
-}
-} */
 @media screen and (min-width: 800px) {
-    ._20 {
-      flex: 2;
-    }
+
     ._60 {
-      flex: 6;
+      flex: 1;
     }
     ._20 {
-      flex: 2;
+      flex: 0;
     }
   }
+
