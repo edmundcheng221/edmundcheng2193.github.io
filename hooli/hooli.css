@@ -1,7 +1,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
 }
 
 /* Full-width input fields */
@@ -97,7 +97,7 @@ span.psw {
 }
 
 /* Add Zoom Animation */
-/* .animate {
+.animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
@@ -110,7 +110,7 @@ span.psw {
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
-} */
+}
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -142,23 +142,21 @@ span.psw {
 
 .wrapper {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 10px;
-  justify-content: flex-end;
+  justify-content: center;
+  text-align: center;
 }
 
 .wrapper > div {
-  background-color: #eee;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 
 }
 
 .nested2 {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  max-height: 1100px;
 }
 
 .navigation {
@@ -168,4 +166,40 @@ span.psw {
 
 .categories {
   font-size: 12px;
+  text-align: left;
+}
+
+
+
+.flexing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.bottom {
+  display: inline-block;
+  text-decoration: none;
+  font-size: small;
+  margin: 10px;
+}
+
+.para {
+  text-align: center;
+}
+
+.bottom:hover {
+  color: green;
+}
+
+.bottom2 {
+  display: inline-block;
+  text-decoration: none;
+  font-size: small;
+  margin: 5px;
+}
+.bottom2:hover {
+  color: green;
 }
