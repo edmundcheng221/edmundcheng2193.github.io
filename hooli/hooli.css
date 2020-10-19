@@ -155,10 +155,10 @@ span.psw {
 
 }
 
-.nested {
+.nested2 {
   display: grid;
-  /* grid-template-rows: 1fr 1fr; */
-
+  grid-template-rows: 1fr 1fr;
+  max-height: 1100px;
 }
 
 .navigation {
