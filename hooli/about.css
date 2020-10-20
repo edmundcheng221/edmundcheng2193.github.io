@@ -1,0 +1,44 @@
+body {
+    background-color: lightgrey;
+}
+h1 {
+    text-align: center;
+}
+
+#banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+figcaption {
+    text-align: center;
+}
+
+#caption {
+    font-size: 20px;
+}
+
+.writing {
+    display: grid;
+    justify-content: center;
+    /* margin: auto; */
+    /* padding: 100px; */
+    margin-left: 75px;
+    margin-right: 75px;
+    
+}
+
+/* @media screen and (max-width: 480px) {
+    img {
+         width: 400px;
+    }
+} */
+
