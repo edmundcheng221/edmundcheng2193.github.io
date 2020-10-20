@@ -36,9 +36,18 @@ figcaption {
     
 }
 
-/* @media screen and (max-width: 480px) {
-    img {
-         width: 400px;
-    }
-} */
 
+.bottom {
+    display: inline-block;
+    text-decoration: none;
+    font-size: small;
+    margin: 10px;
+  }
+  
+  .para {
+    text-align: center;
+  }
+  
+  .bottom:hover {
+    color: green;
+  }

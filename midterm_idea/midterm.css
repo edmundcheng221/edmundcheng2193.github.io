@@ -24,3 +24,23 @@ img {
     text-align: center;
     background-color: black;
 }
+
+.bottom {
+    display: inline-block;
+    text-decoration: none;
+    font-size: small;
+    margin: 10px;
+    color: white;
+  }
+  
+  .para {
+    text-align: center;
+    /* color: white; */
+  }
+  
+  .bottom:hover {
+    color: green;
+  }
+  footer {
+      background-color:black;
+  }
