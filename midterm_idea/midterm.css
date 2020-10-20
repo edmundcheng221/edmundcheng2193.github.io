@@ -4,11 +4,11 @@ body {
     /* font-size: large; */
     /* font-weight: 500; */
 }
-main {
-    background-color: black;
-    margin: auto;
-    width: 700px;
-}
+/* main { */
+    /* background-color: black; */
+    /* margin: 100%; */
+    /* width: 700px; */
+/* } */
 
 img {
     display: block;
@@ -17,5 +17,10 @@ img {
 }
 
 .description {
+    display: block;
     color: white;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background-color: black;
 }
