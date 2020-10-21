@@ -41,10 +41,19 @@ figcaption {
     margin: 10px;
   }
   
-  .para {
+.para {
     text-align: center;
   }
   
-  .bottom:hover {
+.bottom:hover {
     color: green;
   }
+
+.next {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
+}
