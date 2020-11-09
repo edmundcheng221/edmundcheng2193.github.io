@@ -3,6 +3,7 @@ body {
 }
 div {
  display: flex;
+ justify-content: center;
 }
 p, h2 {
     text-align: center;
