@@ -1,0 +1,21 @@
+body {
+    background-color: lightblue;
+}
+h1, h3 {
+    text-align: center;
+    color: black;
+}
+
+button {
+    text-align: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    display: flex;
+    margin: 20px;
+}
