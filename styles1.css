@@ -7,7 +7,9 @@ div img {
     display: block;
     width:  400px;
     height: 540px;
-    margin: auto;
+    /* margin: auto; */
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
