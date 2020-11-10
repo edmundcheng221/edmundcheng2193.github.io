@@ -3,13 +3,22 @@
 
     box-sizing: border-box;
 }
-div img {
+.word {
     display: block;
-    width:  400px;
-    height: 540px;
-    /* margin: auto; */
-    margin-right: auto;
-    margin-left: auto;
+
+}
+
+.cosmo {
+    display: flex;
+    /* width: 50%; */
+    justify-content: center;
+
+
+}
+
+#cosmo {
+    width: 50%;
+    height: 90%;
 }
 
 
