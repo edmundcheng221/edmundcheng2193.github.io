@@ -35,13 +35,18 @@ body, html {
     color: white;
 }
 
+.main {
+    display: flex;
+    justify-content: center;
+}
 img {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    width: 400px;
+    width: 50%;
 
 }
+
 
 figcaption {
     /* background-color: red; */
