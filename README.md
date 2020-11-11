@@ -1,2 +1,3 @@
 # edmundcheng221.github.io
-Class Portfolio
+* Class Portfolio
+* View live demo [Here](https://edmundcheng221.github.io)
