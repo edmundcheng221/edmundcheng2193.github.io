@@ -11,7 +11,11 @@ the part where McLuhan says 'Many of our institutions suppress all the natural d
  beauty of the new technological environment' (page 100). Perhaps McLuhan is trying\
   to argue that people should be allowed to experience new technology on their own. \
  He might be suggesting that in education people focus too much on the information \
- rather than the technology itself. I might be wrong but that was what I got from the reading. \
+ rather than the technology itself. Furthermore, what I got from this reading is that \
+ the medium or the form of the message \
+ (print, web, tech, visual, etc) determines the way in which the message is perceived. \
+ Thus, the message is affected by the medium in which it is transmitted. \
+ I might be wrong but that was what I got from the reading. \
   I also like how there were a lot of pictures. "]
 
 let i = 0;
