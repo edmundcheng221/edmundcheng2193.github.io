@@ -1,7 +1,7 @@
-const nextButton = document.querySelector("button.switch");
-nextButton.addEventListener('click', clicker);
+const next = document.querySelector("button.switch");
+next.addEventListener('click', clicker);
 
-const theTxt = document.querySelector('p');
+const words = document.querySelector('p');
 
 const text= ["I found the text interesting. \
 I liked the part when McLuhan talks about the Medium, \
@@ -21,11 +21,10 @@ the part where McLuhan says 'Many of our institutions suppress all the natural d
   I also like how there were a lot of pictures. "]
 
 let i = 0;
-document.getElementsById('switching').addEventListener("click", imagefunction);
 
 
 function clicker(){    
-    theTxt.textContent = text[i];
+    words.textContent = text[i];
     document.getElementById('picture').src="../img/mcluhan_tech.png"
 
 }
