@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Clock Project</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" media="screen" href="../clock.css">
+<link rel="icon" href="../img/clock_img.jpg">
+		
+</head>
+<body>
+<h1>"Time" Heard Around the World</h1>
+<br>
+<div class="container">
+	<div id="myclock"></div>
+</div>
+
+
+<script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<script language="javascript" type="text/javascript" src="../JS/clock_ams.js" defer></script>  
+<script language="javascript">
+	var intVal, myclock;
+
+	$(window).resize(function(){
+		window.location.reload()
+	});
+
+	$(document).ready(function(){
+
+		//clock plugin constructor
+		$('#myclock').thooClock({
+			size:$(document).height()/1.4,
+			sweepingMinutes:true,
+			sweepingSeconds:true,
+			// onAlarm:function(){
+			// 	//all that happens onAlarm
+			// 	$('#alarm1').show();
+
+			// },
+			showNumerals:true,
+			brandText:'EST',
+			brandText2:'New York',
+			onEverySecond:function(){
+				//callback that should be fired every second
+				//console.log(new Date().getSeconds());
+			}
+
+		});
+
+	});
+
+
+</script>
+  <button><a href="ny_time.html">New York LaGuardia Airport (EST)</a></button>
+  <button><a href="london_time.html">London Heathrow Airport (GMT)</a></button>
+  <button><a href="ams_time.html">Amsterdam Airport Schiphol (GMT+1)</a></button>
+  <button><a href="athens_time.html">Athens International Airport (GMT+2)</a></button>
+  <button><a href="incheon_time.html">Incheon International Airport (GMT +9)</a></button>
+  <button><a href="melbourne_time.html">Melbourne Airport (GMT +11)</a></button>
+  <button><a href="peru_time.html">Jorge Chavez International Airport (GMT -5)</a></button>
+  <button><a href="beijing_time.html">Beijing Capital International Aiport (GMT +8)</a></button>
+  <button><a href="dubai_time.html">Dubai International Airport (GMT +4)</a></button>
+
+
+<br>
+<br>
+</body>
+</html>
