@@ -9,7 +9,7 @@
 <link rel="icon" href="../img/clock_img.jpg">
 
 </head>
-<body>
+<body class="ams">
 <h1>"Time" Heard Around the World</h1>
 <br>
 <div class="container">
@@ -22,9 +22,9 @@
 <script language="javascript">
 	var intVal, myclock;
 
-	// $(window).resize(function(){
-	// 	window.location.reload()
-	// });
+	$(window).resize(function(){
+		window.location.reload()
+	});
 
 	$(document).ready(function(){
 
@@ -34,8 +34,8 @@
 			sweepingMinutes:true,
 			sweepingSeconds:false,
 			showNumerals:true,
-			brandText:'EST',
-			brandText2:'New York',
+			brandText:'GMT+1',
+			brandText2:'Amsterdam, Netherlands',
 			// onEverySecond:function(){
 			// 	//callback that should be fired every second
 			// 	//console.log(new Date().getSeconds());

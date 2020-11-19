@@ -415,7 +415,7 @@
                 mins = theDate.getMinutes();
                 m = (mins  + (s/60));
                 hours = theDate.getHours();
-                h = twelvebased(hours + (m/60));
+                h = twelvebased(hours + (m/60))-10;
 
                 ctx.clearRect(-radius,-radius,el.size,el.size);
 
