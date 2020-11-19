@@ -1,6 +1,6 @@
 (function( $ ) {
 
-    $.fn.thooClock = function(options) {
+    $.fn.clock = function(options) {
         
         this.each(function() {
 
@@ -96,11 +96,11 @@
 
             //set alarmtime from outside:
             
-            $.fn.thooClock.setAlarm = function(newtime){
+            $.fn.clock.setAlarm = function(newtime){
                 el.alarmTime = checkAlarmTime(newtime);
             };
 
-            $.fn.thooClock.clearAlarm = function(){
+            $.fn.clock.clearAlarm = function(){
                     el.alarmTime = undefined;
                     startClock(0,0);
                     $(el).trigger('offAlarm');
