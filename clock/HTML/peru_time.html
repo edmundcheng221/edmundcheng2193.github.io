@@ -20,7 +20,6 @@
 <script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> 
 <script language="javascript" type="text/javascript" src="../JS/clock_peru.js" defer></script>  
 <script language="javascript">
-	var intVal, myclock;
 
 	$(window).resize(function(){
 		window.location.reload()
@@ -30,11 +29,10 @@
 
 		//clock plugin constructor
 		$('#myclock').clock({
-			size:$(document).height()/1.8,
+			size:$(document).height()/1.8,  
 			sweepingMinutes:true,
 			sweepingSeconds:false,
-			showNumerals:true,
-			brandText:'GMT-5',
+			brandText:'GMT-5', 
 			brandText2:'Peru, South America',
 
 		});

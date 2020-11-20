@@ -9,32 +9,37 @@
 <link rel="icon" href="../img/clock_img.jpg">
 <script src="../JS/clock_ny.js" defer></script>
 </head>
+
 <body class="nyc">
 <h1><strong>"Time" Heard Around the World</strong></h1>
 <div class="container">
 	<div id="myclock"></div>
 </div>
-
-
-
+<!-- jquergy script tag -->
 <script language="javascript" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script> 
+<!-- link to js file -->
 <script language="javascript" type="text/javascript" src="../JS/clock_ny.js" defer></script>  
-<script language="javascript">
-	var intVal, myclock;
+<!-- needs this tag to write javascript in html file -->
+<script language="javascript"> 
+	
 
 	$(window).resize(function(){
-		window.location.reload()
+		window.location.reload() // reloads browser when window size changes
 	});
 
-	$(document).ready(function(){
+	$(document).ready(function(){  // runs when images/iframes/DOM is ready
 
 		//clock plugin constructor
 		$('#myclock').clock({
+			// adjust size of the clock
 			size:$(document).height()/1.8,
+			// controls whether the minutes hand sweeps or nah
 			sweepingMinutes:true,
+			// controls whether the seconds hand sweeps or nah
 			sweepingSeconds:false,
-			showNumerals:true,
+			// text telling the time zone
 			brandText:'GMT-5',
+			// text telling the location
 			brandText2:'New York',
 
 		});
@@ -44,6 +49,8 @@
 
 </script>
 <br><br><br>
+<!-- list of airports/locations -->
+
 <div class="airports">
   <button><a href="../HTML/ny_time.html">New York LaGuardia Airport (EST)</a></button>
   <button><a href="london_time.html">London Heathrow Airport (GMT)</a></button>
@@ -62,5 +69,5 @@
 
 
 <!-- Appendix
-Inspiration and resources that helped us
+Inspiration and resources that helped
 https://www.jqueryscript.net/demo/jQuery-Based-Analog-And-Digital-World-Clock-jClocksGMT-js/ -->
