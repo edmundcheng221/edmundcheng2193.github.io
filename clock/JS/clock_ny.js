@@ -4,13 +4,13 @@
         
         this.each(function() {  //this refers to instance of a class (similar to self in python)
 
-        var cnv,
-            ctx,
-            el,
-            defaults,
-            settings,
+        var cnv, // canvas
+            ctx, // context
+            el, // element loaded with all settings parameters
+            defaults, // default attributes
+            settings, 
             radius,
-            x,
+            x, // parameter for startClock function
 
 
        defaults = { // set default features/appearance of the clock
