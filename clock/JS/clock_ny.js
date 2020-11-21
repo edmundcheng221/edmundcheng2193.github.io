@@ -1,4 +1,4 @@
-(function( $ ) {
+(function( $ ) { //begin jquery
 
     $.fn.clock = function(options) {
         
@@ -11,7 +11,7 @@
                 settings,
                 radius,
                 x,
-                y;
+
 
        defaults = {
                 size: 250,
@@ -80,7 +80,7 @@
             el.sweepingMinutes = settings.sweepingMinutes;
             el.sweepingSeconds = settings.sweepingSeconds;
 
-            x=0; //loopCounter for Alarm
+
             
             cnv = document.createElement('canvas');
             ctx = cnv.getContext('2d');
@@ -224,21 +224,21 @@
 
             }
 
-            function twelvebased(hour){
+            function twelvebased(hour){ //restart hand after reaching 12
                 if(hour >= 12){
                     hour = hour - 12;
                 }
                 return hour;
             }
 
-            function drawHand(length){
+            function drawHand(length){ // draw the hands
                ctx.beginPath();
                ctx.moveTo(0,0);
                ctx.lineTo(0, length * -1);
                ctx.stroke();
             }
             
-            function drawSecondHand(milliseconds, seconds, color){
+            function drawSecondHand(milliseconds, seconds, color){ // function to draw the seconds hand
                 var shlength = (radius)-(el.size/40);
                 
                 ctx.save();
@@ -271,7 +271,7 @@
                 ctx.restore();
             }
 
-            function drawMinuteHand(minutes, color){
+            function drawMinuteHand(minutes, color){ //function to draw the minute hand
                 var mhlength = el.size/2.2;
                 ctx.save();
                 ctx.lineWidth = parseInt(el.size/50,10);
@@ -292,7 +292,7 @@
                 ctx.restore();
             }
 
-            function drawHourHand(hours, color){
+            function drawHourHand(hours, color){ // function to graw the hour hand
                 var hhlength = el.size/3;
                 ctx.save();
                 ctx.lineWidth = parseInt(el.size/25, 10);
@@ -313,7 +313,7 @@
 
 
             function startClock(x){
-                var theDate,
+                var theDate,  // declare relevant variables
                     ms,
                     s,
                     m,
@@ -323,16 +323,7 @@
 
                 theDate = new Date();
 
-                if(el.timeCorrection){
-                    if(el.timeCorrection.operator === '+'){
-                        theDate.setHours(theDate.getHours() + el.timeCorrection.hours);
-                        theDate.setMinutes(theDate.getMinutes() + el.timeCorrection.minutes);
-                    }
-                    if(el.timeCorrection.operator === '-'){
-                        theDate.setHours(theDate.getHours() - el.timeCorrection.hours);
-                        theDate.setMinutes(theDate.getMinutes() - el.timeCorrection.minutes);
-                    }
-                }
+
 // change the time
     
                 s = theDate.getSeconds(); // get the current number of seconds elapsed
@@ -343,17 +334,16 @@
                 h = twelvebased(hours + (m/60));  // hour hand based on number of hours and number 
                 //and number of minutes elapsed
 
+                // modifies the size of hands 
                 ctx.clearRect(-radius,-radius,el.size,el.size);
 
+                // draws the outter dial
                 drawDial(el.dialColor, el.dialBackgroundColor);
 
-                if(el.alarmTime !== undefined){
-                    el.alarmTime = checkAlarmTime(el.alarmTime);
-                    drawAlarmHand(el.alarmTime, el.alarmHandColor, el.alarmHandTipColor);
-                }
-                drawHourHand(h, el.hourHandColor);
-                drawMinuteHand(m, el.minuteHandColor);
-                drawSecondHand(ms, s, el.secondHandColor);
+
+                drawHourHand(h, el.hourHandColor); //trigger drawHourHand function
+                drawMinuteHand(m, el.minuteHandColor); //trigger drawMinuteHand function
+                drawSecondHand(ms, s, el.secondHandColor); //trigger drawSecondHand function
 
                 // triggers hand to move every second
                 window.requestAnimationFrame(function(){startClock(x)});
@@ -362,7 +352,7 @@
 
             startClock(x);
 
-   });//return each this;
+   });//return each
   };     
 
 }(jQuery));

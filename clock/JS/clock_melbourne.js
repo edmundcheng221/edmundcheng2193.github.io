@@ -80,7 +80,7 @@
             el.sweepingMinutes = settings.sweepingMinutes;
             el.sweepingSeconds = settings.sweepingSeconds;
 
-            x=0; //loopCounter for Alarm
+
             
             cnv = document.createElement('canvas');
             ctx = cnv.getContext('2d');
@@ -323,16 +323,7 @@
 
                 theDate = new Date();
 
-                if(el.timeCorrection){
-                    if(el.timeCorrection.operator === '+'){
-                        theDate.setHours(theDate.getHours() + el.timeCorrection.hours);
-                        theDate.setMinutes(theDate.getMinutes() + el.timeCorrection.minutes);
-                    }
-                    if(el.timeCorrection.operator === '-'){
-                        theDate.setHours(theDate.getHours() - el.timeCorrection.hours);
-                        theDate.setMinutes(theDate.getMinutes() - el.timeCorrection.minutes);
-                    }
-                }
+
 // change the time
     
                 s = theDate.getSeconds();
@@ -346,10 +337,7 @@
 
                 drawDial(el.dialColor, el.dialBackgroundColor);
 
-                if(el.alarmTime !== undefined){
-                    el.alarmTime = checkAlarmTime(el.alarmTime);
-                    drawAlarmHand(el.alarmTime, el.alarmHandColor, el.alarmHandTipColor);
-                }
+                
                 drawHourHand(h, el.hourHandColor);
                 drawMinuteHand(m, el.minuteHandColor);
                 drawSecondHand(ms, s, el.secondHandColor);
