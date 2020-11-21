@@ -11,13 +11,12 @@
                 settings,
                 radius,
                 x,
-                y;
 
        defaults = {
-                size: 250,
-                dialColor: '#000000',
+                size: 100,
+                dialColor: 'yellow',
                 dialBackgroundColor:'transparent',
-                secondHandColor: '#F3A829',
+                secondHandColor: 'red',
                 minuteHandColor: '#222222',
                 hourHandColor: '#222222',
                 alarmHandColor: '#FFFFFF',
@@ -69,12 +68,7 @@
             el.brandText = settings.brandText;
             el.brandText2 = settings.brandText2;
             el.brandFont = settings.brandFont;
-            
-            el.alarmCount = settings.alarmCount;
-            el.alarmTime = settings.alarmTime;
-            el.onAlarm = settings.onAlarm;
-            el.offAlarm = settings.offAlarm;
-
+           
             el.onEverySecond = settings.onEverySecond;
 
             el.sweepingMinutes = settings.sweepingMinutes;
@@ -94,43 +88,7 @@
             //translate 0,0 to center of circle:
             ctx.translate(radius, radius); 
 
-            //set alarmtime from outside:
-            
-            $.fn.clock.setAlarm = function(newtime){
-                el.alarmTime = checkAlarmTime(newtime);
-            };
-
-            $.fn.clock.clearAlarm = function(){
-                    el.alarmTime = undefined;
-                    startClock(0,0);
-                    $(el).trigger('offAlarm');
-            };
-
-
-            function checkAlarmTime(newtime){
-                var thedate;
-                if(newtime instanceof Date){
-                    //keep date object
-                    thedate=newtime;
-                }
-                else{
-                    //convert from string formatted like hh[:mm[:ss]]]
-                    var arr = newtime.split(':');
-                    thedate=new Date();
-                    for(var i= 0; i <3 ; i++){
-                        //force to int
-                        arr[i]=Math.floor(arr[i]);
-                        //check if NaN or invalid min/sec
-                        if( arr[i] !==arr[i] || arr[i] > 59) arr[i]=0 ;
-                        //no more than 24h
-                        if( i==0 && arr[i] > 23) arr[i]=0 ;
-                    }
-                    thedate.setHours(arr[0],arr[1],arr[2]);
-                }
-                //alert(el.id);
-                return thedate;
-            };
-        
+           
 
             function toRadians(deg){
                 return ( Math.PI / 180 ) * deg;
@@ -149,19 +107,13 @@
                     ey,
                     nx,
                     ny,
-                    text,
                     textSize,
                     textWidth,
                     brandtextWidth,
                     brandtextWidth2;
 
                 dialRadius = parseInt(radius-(el.size/50), 10);
-                dialBackRadius = radius-(el.size/400);
 
-                ctx.beginPath();
-                ctx.arc(0,0,dialBackRadius,0,360,false);
-                ctx.fillStyle = bgcolor;
-                ctx.fill();
                  
                 for (i=1; i<=60; i+=1) {
                     ang=Math.PI/30*i;
@@ -248,10 +200,6 @@
 
                 ctx.rotate( toRadians((milliseconds * 0.006) + (seconds * 6)));
 
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/80,10);
-                ctx.shadowOffsetX = parseInt(el.size/200,10);
-                ctx.shadowOffsetY = parseInt(el.size/200,10);
 
                 drawHand(shlength);
 
@@ -277,16 +225,10 @@
                 ctx.lineWidth = parseInt(el.size/50,10);
                 ctx.lineCap = "round";
                 ctx.strokeStyle = color;
-               
-                if(!el.sweepingMinutes){
-                    minutes.isInteger ? minutes : minutes = parseInt(minutes);
-                }
+
                 ctx.rotate( toRadians(minutes * 6));
 
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/50,10);
-                ctx.shadowOffsetX = parseInt(el.size/250,10);
-                ctx.shadowOffsetY = parseInt(el.size/250,10);
+
 
                 drawHand(mhlength);
                 ctx.restore();
@@ -300,10 +242,6 @@
                 ctx.strokeStyle = color;
                 ctx.rotate( toRadians(hours * 30));
 
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/50, 10);
-                ctx.shadowOffsetX = parseInt(el.size/300, 10);
-                ctx.shadowOffsetY = parseInt(el.size/300, 10);
 
                 drawHand(hhlength);
                 ctx.restore();

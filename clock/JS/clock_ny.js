@@ -2,39 +2,33 @@
 
     $.fn.clock = function(options) {
         
-        this.each(function() {
+        this.each(function() {  //this refers to instance of a class (similar to self in python)
 
         var cnv,
-                ctx,
-                el,
-                defaults,
-                settings,
-                radius,
-                x,
+            ctx,
+            el,
+            defaults,
+            settings,
+            radius,
+            x,
 
 
-       defaults = {
-                size: 250,
-                dialColor: '#000000',
+       defaults = { // set default features/appearance of the clock
+                size: 100, 
+                dialColor: 'white',
                 dialBackgroundColor:'transparent',
-                secondHandColor: '#F3A829',
+                secondHandColor: 'red',
                 minuteHandColor: '#222222',
                 hourHandColor: '#222222',
                 alarmHandColor: '#FFFFFF',
                 alarmHandTipColor: '#026729',
-                timeCorrection: {
-                    operator: '+',
-                    hours: 0,
-                    minutes: 0
-                },
-                alarmCount: 1,
                 showNumerals: true,
-                numerals: [
+                numerals: [ // shows hours 1-12
                     {1:1},
                     {2:2},
                     {3:3},
                     {4:4},
-                    {5:5},
+                    {5:5}, //mapping for the time
                     {6:6},
                     {7:7},
                     {8:8},
@@ -49,10 +43,10 @@
                 brandFont: 'arial'
             };
 
-            settings = $.extend({}, defaults, options);
+            settings = $.extend({}, defaults, options); //extend merges the properties
 
-            el = this;
-
+            el = this; // like "self" from python
+            // defines the parameters of el
             el.size = settings.size;
             el.dialColor = settings.dialColor;
             el.dialBackgroundColor = settings.dialBackgroundColor;
@@ -65,161 +59,107 @@
             el.showNumerals = settings.showNumerals;
             el.numerals = settings.numerals;
             el.numeralFont = settings.numeralFont;
-
             el.brandText = settings.brandText;
             el.brandText2 = settings.brandText2;
             el.brandFont = settings.brandFont;
-            
-            el.alarmCount = settings.alarmCount;
-            el.alarmTime = settings.alarmTime;
-            el.onAlarm = settings.onAlarm;
-            el.offAlarm = settings.offAlarm;
-
             el.onEverySecond = settings.onEverySecond;
-
             el.sweepingMinutes = settings.sweepingMinutes;
             el.sweepingSeconds = settings.sweepingSeconds;
 
+            cnv = document.createElement('canvas'); // creates canvas for the clock
+            ctx = cnv.getContext('2d'); //2d rendering of clock
 
-            
-            cnv = document.createElement('canvas');
-            ctx = cnv.getContext('2d');
-
-            cnv.width = this.size;
-            cnv.height = this.size;
+            cnv.width = this.size; // adjust width of canvas
+            cnv.height = this.size; // adjust height of canvas
             //append canvas to element
-            $(cnv).appendTo(el);
-
-            radius = parseInt(el.size/2, 10);
+            $(cnv).appendTo(el); // appends el to the canvas
+            // defines clock radius
+            radius = parseInt(el.size/2, 10); // parseInt parses a string and returns and int
             //translate 0,0 to center of circle:
-            ctx.translate(radius, radius); 
+            ctx.translate(radius, radius); // translates where the clock is
+   
 
-            //set alarmtime from outside:
-            
-            $.fn.clock.setAlarm = function(newtime){
-                el.alarmTime = checkAlarmTime(newtime);
-            };
-
-            $.fn.clock.clearAlarm = function(){
-                    el.alarmTime = undefined;
-                    startClock(0,0);
-                    $(el).trigger('offAlarm');
-            };
-
-
-            function checkAlarmTime(newtime){
-                var thedate;
-                if(newtime instanceof Date){
-                    //keep date object
-                    thedate=newtime;
-                }
-                else{
-                    //convert from string formatted like hh[:mm[:ss]]]
-                    var arr = newtime.split(':');
-                    thedate=new Date();
-                    for(var i= 0; i <3 ; i++){
-                        //force to int
-                        arr[i]=Math.floor(arr[i]);
-                        //check if NaN or invalid min/sec
-                        if( arr[i] !==arr[i] || arr[i] > 59) arr[i]=0 ;
-                        //no more than 24h
-                        if( i==0 && arr[i] > 23) arr[i]=0 ;
-                    }
-                    thedate.setHours(arr[0],arr[1],arr[2]);
-                }
-                //alert(el.id);
-                return thedate;
-            };
-        
-
-            function toRadians(deg){
+            function toRadians(deg){ // convert degrees to radians
                 return ( Math.PI / 180 ) * deg;
             }     
+            
 
-            function drawDial(color, bgcolor){
+            // driaws the dial for the clock
+            function drawDial(color){
                 var dialRadius,
-                    dialBackRadius,
                     i,
-                    ang,
-                    sang,
-                    cang,
-                    sx,
-                    sy,
-                    ex,
-                    ey,
-                    nx,
+                    ang, // angle
+                    sang, // sine of angle
+                    cang, // cosine of angle
+                    sx, // sin x
+                    sy, // sin y
+                    ex, // arc x
+                    ey, // arc y
+                    nx, //
                     ny,
-                    text,
                     textSize,
                     textWidth,
-                    brandtextWidth,
-                    brandtextWidth2;
+                    textWidth2,
+                    textWidth3;
 
-                dialRadius = parseInt(radius-(el.size/50), 10);
-                dialBackRadius = radius-(el.size/400);
+                dialRadius = parseInt(radius-(el.size/50), 10); // radius of dial
 
-                ctx.beginPath();
-                ctx.arc(0,0,dialBackRadius,0,360,false);
-                ctx.fillStyle = bgcolor;
-                ctx.fill();
-                 
-                for (i=1; i<=60; i+=1) {
+                for (i=1; i<=60; i++) {
                     ang=Math.PI/30*i;
-                    sang=Math.sin(ang);
+                    sang=Math.sin(ang); 
                     cang=Math.cos(ang);
                     //hour marker/numeral
-                    if (i % 5 === 0) {
-                        ctx.lineWidth = parseInt(el.size/50,10);
-                        sx = sang * (dialRadius - dialRadius/9);
-                        sy = cang * -(dialRadius - dialRadius/9);
-                        ex = sang * dialRadius;
-                        ey = cang * - dialRadius;
-                        nx = sang * (dialRadius - dialRadius/4.2);
-                        ny = cang * -(dialRadius - dialRadius/4.2);
-                        marker = i/5;
+                    if (i % 5 === 0) { // checks is a multiple of 5 minutes
+                        ctx.lineWidth = parseInt(el.size/50,10); // width of the lines at each hour number (1 to 12)
+                        sx = sang * (dialRadius - dialRadius/9); // angle of each line w/ respect to x
+                        sy = cang * -(dialRadius - dialRadius/9); // angle of each line w/ respect to y
+                        ex = sang * dialRadius; //arc x
+                        ey = cang * - dialRadius; //arc y
+                        nx = sang * (dialRadius - dialRadius/4.2); // how close numbers are to the lines w.r.t x
+                        ny = cang * -(dialRadius - dialRadius/4.2); // how close numbers are to the lines w.r.t y
+                        marker = i/5; // 60/5 = 12 differnt labels
 
-                        ctx.textBaseline = 'middle';
-                        textSize = parseInt(el.size/13,10);
-                        ctx.font = '100 ' + textSize + 'px ' + el.numeralFont;
-                        ctx.beginPath();
-                        ctx.fillStyle = color;
+                        textSize = parseInt(el.size/13,10); // sets size of hour label nums
+                        ctx.font = '100 ' + textSize + 'px ' + el.numeralFont; // font size
+                        ctx.fillStyle = color; 
 
                         if(el.showNumerals && el.numerals.length > 0){
-                            el.numerals.map(function(numeral){
-                                if(marker == Object.keys(numeral)){
-                                    textWidth = ctx.measureText (numeral[marker]).width;
-                                    ctx.fillText(numeral[marker],nx-(textWidth/2),ny);
+                            el.numerals.map(function(numeral){  // creates the numbers in clock
+                                if(marker == Object.keys(numeral)){ // map the keys in dictionary
+                                    textWidth = ctx.measureText (numeral[marker]).width; 
+                                    // adjusts positioning of text
+                                    ctx.fillText(numeral[marker],nx-(textWidth/2),ny); 
                                 }
                             });
                         }
                     //minute marker
-                    } else {
-                       ctx.lineWidth = parseInt(el.size/100,10);
+                    } else { // adjust the formatting of the minute lines in the dial
+                        ctx.lineWidth = parseInt(el.size/100,10);
                         sx = sang * (dialRadius - dialRadius/20);
                         sy = cang * -(dialRadius - dialRadius/20);
                         ex = sang * dialRadius;
                         ey = cang * - dialRadius;
                     }
 
-                    ctx.beginPath();
+                    ctx.beginPath(); // clears prior path operations such as arc
                     ctx.strokeStyle = color;
-                    ctx.lineCap = "round";
-                    ctx.moveTo(sx,sy);
+                    ctx.lineCap = "round"; // makes the lines round
+                    ctx.moveTo(sx,sy); 
                     ctx.lineTo(ex,ey);
-                    ctx.stroke();
+                    ctx.stroke(); // draws the path
                 } 
 
-                if(el.brandText !== undefined){
+                if(el.brandText !== undefined){ // font and formatting of the timezone text
                     ctx.font = '100 ' + parseInt(el.size/28,10) + 'px ' + el.brandFont;
-                    brandtextWidth = ctx.measureText (el.brandText).width;
-                    ctx.fillText(el.brandText,-(brandtextWidth/2),(el.size/6)); 
+                    textWidth2 = ctx.measureText (el.brandText).width;
+                    ctx.fillText(el.brandText,-(textWidth2/2),(el.size/6)); 
                 }
 
-                if(el.brandText2 !== undefined){
-                    ctx.textBaseline = 'middle';
+                if(el.brandText2 !== undefined){ // font and formatting of the location text
+                    ctx.textBaseline = 'middle'; // moves text to middle
                     ctx.font = '100 ' + parseInt(el.size/44,10) + 'px ' + el.brandFont;
-                    brandtextWidth2 = ctx.measureText (el.brandText2).width;
-                    ctx.fillText(el.brandText2,-(brandtextWidth2/2),(el.size/5)); 
+                    textWidth3 = ctx.measureText (el.brandText2).width;
+                    ctx.fillText(el.brandText2,-(textWidth3/2),(el.size/5)); 
                 }
 
             }
@@ -234,7 +174,7 @@
             function drawHand(length){ // draw the hands
                ctx.beginPath();
                ctx.moveTo(0,0);
-               ctx.lineTo(0, length * -1);
+               ctx.lineTo(0, -length);
                ctx.stroke();
             }
             
@@ -246,12 +186,7 @@
                 ctx.lineCap = "round";
                 ctx.strokeStyle = color;
 
-                ctx.rotate( toRadians((milliseconds * 0.006) + (seconds * 6)));
-
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/80,10);
-                ctx.shadowOffsetX = parseInt(el.size/200,10);
-                ctx.shadowOffsetY = parseInt(el.size/200,10);
+                ctx.rotate( toRadians((milliseconds * 0.006) + (seconds * 6))); // rotate the hand
 
                 drawHand(shlength);
 
@@ -278,15 +213,8 @@
                 ctx.lineCap = "round";
                 ctx.strokeStyle = color;
                
-                if(!el.sweepingMinutes){
-                    minutes.isInteger ? minutes : minutes = parseInt(minutes);
-                }
+         
                 ctx.rotate( toRadians(minutes * 6));
-
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/50,10);
-                ctx.shadowOffsetX = parseInt(el.size/250,10);
-                ctx.shadowOffsetY = parseInt(el.size/250,10);
 
                 drawHand(mhlength);
                 ctx.restore();
@@ -300,25 +228,19 @@
                 ctx.strokeStyle = color;
                 ctx.rotate( toRadians(hours * 30));
 
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/50, 10);
-                ctx.shadowOffsetX = parseInt(el.size/300, 10);
-                ctx.shadowOffsetY = parseInt(el.size/300, 10);
 
-                drawHand(hhlength);
-                ctx.restore();
+                drawHand(hhlength); 
+                ctx.restore(); // need to skeep the dial from spinning
             }
 
-        
-
-
+    
             function startClock(x){
                 var theDate,  // declare relevant variables
-                    ms,
-                    s,
-                    m,
-                    hours,
-                    mins,
+                    ms, 
+                    s, 
+                    m, 
+                    hours, 
+                    mins, 
                     h;
 
                 theDate = new Date();
@@ -355,4 +277,4 @@
    });//return each
   };     
 
-}(jQuery));
+}(jQuery)); // end jquery
