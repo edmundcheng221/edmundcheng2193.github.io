@@ -309,7 +309,7 @@
                 ctx.restore();
             }
 
-\
+
 
             function startClock(x){
                 var theDate,
