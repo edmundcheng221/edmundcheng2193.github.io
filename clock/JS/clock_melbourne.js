@@ -309,78 +309,8 @@
                 ctx.restore();
             }
 
-            function timeToDecimal(time){
-                var h,
-                    m;
-                if(time !== undefined){
-                    h = twelvebased(time.getHours());
-                    m = time.getMinutes();
-                }
-                return parseInt(h,10) + (m/60);
-            }
 
-            function drawAlarmHand(alarm, color, tipcolor){
 
-                var ahlength = el.size/2.4;
-                
-                ctx.save();
-                ctx.lineWidth = parseInt(el.size/30, 10);
-                ctx.lineCap = "butt";
-                ctx.strokeStyle = color;
-
-                //decimal equivalent to hh:mm
-                alarm = timeToDecimal(alarm);
-                ctx.rotate( toRadians(alarm * 30));
-
-                ctx.shadowColor = 'rgba(0,0,0,.5)';
-                ctx.shadowBlur = parseInt(el.size/55, 10);
-                ctx.shadowOffsetX = parseInt(el.size/300, 10);
-                ctx.shadowOffsetY = parseInt(el.size/300, 10);  
-
-                ctx.beginPath();
-                ctx.moveTo(0,0);
-                ctx.lineTo(0, (ahlength-(el.size/10)) * -1);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.strokeStyle = tipcolor;
-                ctx.moveTo(0, (ahlength-(el.size/10)) * -1);
-                ctx.lineTo(0, (ahlength) * -1);
-                ctx.stroke();
-
-                //round center
-                ctx.beginPath();
-                ctx.arc(0, 0, parseInt(el.size/24, 10), 0, 360, false);
-                ctx.fillStyle = color;
-                ctx.fill();
-                ctx.restore();
-            }  
-
-            //listener
-            if(el.onAlarm !== undefined){
-            	$(el).on('onAlarm', function(e){
-                	el.onAlarm();
-                	e.preventDefault();
-                	e.stopPropagation();
-            	});
-            }
-
-            if(el.onEverySecond !== undefined){
-                $(el).on('onEverySecond', function(e){
-                    el.onEverySecond();
-                    e.preventDefault();
-                });
-            }
-
-            if(el.offAlarm !== undefined){
-	            $(el).on('offAlarm', function(e){
-    	            el.offAlarm();
-        	        e.stopPropagation();
-            	    e.preventDefault();
-           		});
-			}
-
-            y=0;
 
             function startClock(x){
                 var theDate,
@@ -389,12 +319,7 @@
                     m,
                     hours,
                     mins,
-                    h,
-                    // exth,
-                    // extm,
-                    allExtM,
-                    allAlarmM,
-                    atime;
+                    h;
 
                 theDate = new Date();
 
@@ -429,26 +354,7 @@
                 drawMinuteHand(m, el.minuteHandColor);
                 drawSecondHand(ms, s, el.secondHandColor);
 
-                //trigger every second custom event
-                if(y !== s){
-                    $(el).trigger('onEverySecond');
-                    y = s;
-                }
-               
-                if(el.alarmTime !== undefined){
-                    allExtM = (el.alarmTime.getHours()*60*60) + (el.alarmTime.getMinutes() *60) + el.alarmTime.getSeconds();
-                }
 
-                allAlarmM = (hours*60*60) + (mins*60) + s;
-
-                //alarmMinutes greater than passed Minutes;
-                if(allAlarmM >= allExtM){
-                    x+=1; 
-                }
-                //trigger alarm for as many times as i < alarmCount
-                if(x <= el.alarmCount && x !== 0){
-                   $(el).trigger('onAlarm');
-                }
                 
                 window.requestAnimationFrame(function(){startClock(x)});
 
