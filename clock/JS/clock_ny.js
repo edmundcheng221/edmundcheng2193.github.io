@@ -16,7 +16,6 @@
        defaults = { // set default features/appearance of the clock
                 size: 100, 
                 dialColor: 'white',
-                dialBackgroundColor:'transparent',
                 secondHandColor: 'red',
                 minuteHandColor: '#222222',
                 hourHandColor: '#222222',
@@ -45,22 +44,19 @@
 
             el = this; // like "self" from python
             // defines the parameters of el
-            el.size = settings.size;
-            el.dialColor = settings.dialColor;
-            el.dialBackgroundColor = settings.dialBackgroundColor;
-            el.secondHandColor = settings.secondHandColor;
-            el.minuteHandColor = settings.minuteHandColor;
-            el.hourHandColor = settings.hourHandColor;
-            el.timeCorrection = settings.timeCorrection;
-            el.showNumerals = settings.showNumerals;
-            el.numerals = settings.numerals;
-            el.numeralFont = settings.numeralFont;
-            el.brandText = settings.brandText;
-            el.brandText2 = settings.brandText2;
-            el.brandFont = settings.brandFont;
-            el.onEverySecond = settings.onEverySecond;
-            el.sweepingMinutes = settings.sweepingMinutes;
-            el.sweepingSeconds = settings.sweepingSeconds;
+            el.size = settings.size; // controls size
+            el.dialColor = settings.dialColor; // controls dial color
+            el.secondHandColor = settings.secondHandColor; // color of second hand
+            el.minuteHandColor = settings.minuteHandColor; // color of minute hand
+            el.hourHandColor = settings.hourHandColor; // color of hour hand
+            el.showNumerals = settings.showNumerals; // show the numbers
+            el.numerals = settings.numerals; // the numbers shown
+            el.numeralFont = settings.numeralFont; // font of the numbers
+            el.brandText = settings.brandText; // text 1 with the time zone
+            el.brandText2 = settings.brandText2; // text 2 with the location
+            el.brandFont = settings.brandFont; // font of the text
+            el.sweepingMinutes = settings.sweepingMinutes; // minutes sweeps
+            el.sweepingSeconds = settings.sweepingSeconds; // seconds sweeps
 
             cnv = document.createElement('canvas'); // creates canvas for the clock
             ctx = cnv.getContext('2d'); //2d rendering of clock
@@ -76,14 +72,14 @@
    
 
             function toRadians(deg){ // convert degrees to radians
-                return ( Math.PI / 180 ) * deg;
+                return ( Math.PI / 180 ) * deg; 
             }     
             
 
             // driaws the dial for the clock
             function drawDial(color){
                 var dialRadius,
-                    i,
+                    i, // iterator
                     ang, // angle
                     sang, // sine of angle
                     cang, // cosine of angle
@@ -93,10 +89,10 @@
                     ey, // arc y
                     nx, //
                     ny,
-                    textSize,
-                    textWidth,
-                    textWidth2,
-                    textWidth3;
+                    textSize, // size of text
+                    textWidth, // width of text for numeral
+                    textWidth2, // width of text for time zone
+                    textWidth3; // width of text for location
 
                 dialRadius = parseInt(radius-(el.size/50), 10); // radius of dial
 
@@ -124,7 +120,7 @@
                                 if(marker == Object.keys(numeral)){ // map the keys in dictionary
                                     textWidth = ctx.measureText (numeral[marker]).width; 
                                     // adjusts positioning of text
-                                    ctx.fillText(numeral[marker],nx-(textWidth/2),ny); 
+                                    ctx.fillText(numeral[marker],nx-(textWidth/2),ny);  // draws the filltext on the canvas
                                 }
                             });
                         }
@@ -232,14 +228,14 @@
     
             function startClock(x){
                 var theDate,  // declare relevant variables
-                    ms, 
-                    s, 
-                    m, 
-                    hours, 
-                    mins, 
-                    h;
+                    ms, //millisecond
+                    s,  //second
+                    m,  //min in float
+                    hours,  // hour
+                    mins, //min integer
+                    h; // hour float
 
-                theDate = new Date();
+                theDate = new Date(); // get date
 
 
 // change the time
@@ -256,7 +252,7 @@
                 ctx.clearRect(-radius,-radius,el.size,el.size);
 
                 // draws the outter dial
-                drawDial(el.dialColor, el.dialBackgroundColor);
+                drawDial(el.dialColor);
 
 
                 drawHourHand(h, el.hourHandColor); //trigger drawHourHand function
@@ -268,7 +264,7 @@
 
             }
 
-            startClock(x);
+            startClock(x); // calls the startClock function
 
    });//return each
   };     

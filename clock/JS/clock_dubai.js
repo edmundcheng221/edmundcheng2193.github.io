@@ -15,15 +15,9 @@
        defaults = {
                 size: 100,
                 dialColor: 'yellow',
-                dialBackgroundColor:'transparent',
                 secondHandColor: 'red',
                 minuteHandColor: '#222222',
                 hourHandColor: '#222222',
-                timeCorrection: {
-                    operator: '+',
-                    hours: 0,
-                    minutes: 0
-                },
                 showNumerals: true,
                 numerals: [
                     {1:1},
@@ -51,21 +45,15 @@
 
             el.size = settings.size;
             el.dialColor = settings.dialColor;
-            el.dialBackgroundColor = settings.dialBackgroundColor;
             el.secondHandColor = settings.secondHandColor;
             el.minuteHandColor = settings.minuteHandColor;
             el.hourHandColor = settings.hourHandColor;
-            el.timeCorrection = settings.timeCorrection;
             el.showNumerals = settings.showNumerals;
             el.numerals = settings.numerals;
             el.numeralFont = settings.numeralFont;
-
             el.brandText = settings.brandText;
             el.brandText2 = settings.brandText2;
             el.brandFont = settings.brandFont;
-           
-            el.onEverySecond = settings.onEverySecond;
-
             el.sweepingMinutes = settings.sweepingMinutes;
             el.sweepingSeconds = settings.sweepingSeconds;
 
@@ -89,9 +77,8 @@
                 return ( Math.PI / 180 ) * deg;
             }     
 
-            function drawDial(color, bgcolor){
+            function drawDial(color){
                 var dialRadius,
-                    dialBackRadius,
                     i,
                     ang,
                     sang,
@@ -265,7 +252,7 @@
 
                 ctx.clearRect(-radius,-radius,el.size,el.size);
 
-                drawDial(el.dialColor, el.dialBackgroundColor);
+                drawDial(el.dialColor);
 
 
                 drawHourHand(h, el.hourHandColor);
