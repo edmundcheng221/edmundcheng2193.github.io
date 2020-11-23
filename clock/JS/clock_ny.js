@@ -121,7 +121,9 @@
                                     textWidth = ctx.measureText (numeral[marker]).width; 
                                     // adjusts positioning of text
                                     ctx.fillText(numeral[marker],nx-(textWidth/2),ny);  // draws the filltext on the canvas
+                                // parameters - text, x coordinate where to fill text, y coordinate where to fill text
                                 }
+
                             });
                         }
                     //minute marker
@@ -134,16 +136,16 @@
                     }
 
                     ctx.beginPath(); // clears prior path operations such as arc
-                    ctx.strokeStyle = color;
+                    ctx.strokeStyle = color; // adjust color
                     ctx.lineCap = "round"; // makes the lines round
-                    ctx.moveTo(sx,sy); 
-                    ctx.lineTo(ex,ey);
+                    ctx.moveTo(sx,sy); // move to coordinate specified
+                    ctx.lineTo(ex,ey); // draws line to coordinates specified
                     ctx.stroke(); // draws the path
                 } 
 
                 if(el.brandText !== undefined){ // font and formatting of the timezone text
                     ctx.font = '100 ' + parseInt(el.size/28,10) + 'px ' + el.brandFont;
-                    textWidth2 = ctx.measureText (el.brandText).width;
+                    textWidth2 = ctx.measureText(el.brandText).width;
                     ctx.fillText(el.brandText,-(textWidth2/2),(el.size/6)); 
                 }
 
