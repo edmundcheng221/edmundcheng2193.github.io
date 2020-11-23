@@ -102,7 +102,7 @@
                     cang=Math.cos(ang); // cosine of angle
                     //hour marker/numeral
                     if (i % 5 === 0) { // checks is a multiple of 5 minutes
-                        // formats the design of the dial marks
+                  
                         ctx.lineWidth = parseInt(el.size/50,10); // width of the lines at each hour number (1 to 12)
                         sx = sang * (dialRadius - dialRadius/9); // angle of each line w/ respect to x
                         sy = cang * -(dialRadius - dialRadius/9); // angle of each line w/ respect to y
