@@ -1,14 +1,14 @@
 (function( $ ) { //begin jquery
 
-    $.fn.clock = function(options) {
+    $.fn.clock = function(options) { // start clock function, options object
         
         this.each(function() {  //this refers to instance of a class (similar to self in python)
-
+            // each iterates
         var cnv, // canvas
             ctx, // context
             el, // element loaded with all settings parameters
             defaults, // default attributes
-            settings, 
+            settings, // defaults + options
             radius,
             x, // parameter for startClock function
 
@@ -20,8 +20,6 @@
                 secondHandColor: 'red',
                 minuteHandColor: '#222222',
                 hourHandColor: '#222222',
-                alarmHandColor: '#FFFFFF',
-                alarmHandTipColor: '#026729',
                 showNumerals: true,
                 numerals: [ // shows hours 1-12
                     {1:1},
@@ -53,8 +51,6 @@
             el.secondHandColor = settings.secondHandColor;
             el.minuteHandColor = settings.minuteHandColor;
             el.hourHandColor = settings.hourHandColor;
-            el.alarmHandColor = settings.alarmHandColor;
-            el.alarmHandTipColor = settings.alarmHandTipColor;
             el.timeCorrection = settings.timeCorrection;
             el.showNumerals = settings.showNumerals;
             el.numerals = settings.numerals;

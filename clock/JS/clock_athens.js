@@ -20,8 +20,6 @@
                 secondHandColor: 'red',
                 minuteHandColor: '#222222',
                 hourHandColor: '#222222',
-                alarmHandColor: '#FFFFFF',
-                alarmHandTipColor: '#026729',
                 timeCorrection: {
                     operator: '+',
                     hours: 0,
@@ -58,8 +56,6 @@
             el.secondHandColor = settings.secondHandColor;
             el.minuteHandColor = settings.minuteHandColor;
             el.hourHandColor = settings.hourHandColor;
-            el.alarmHandColor = settings.alarmHandColor;
-            el.alarmHandTipColor = settings.alarmHandTipColor;
             el.timeCorrection = settings.timeCorrection;
             el.showNumerals = settings.showNumerals;
             el.numerals = settings.numerals;
