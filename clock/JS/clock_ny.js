@@ -14,12 +14,12 @@
 
 
        defaults = { // set default features/appearance of the clock
-                size: 100, 
-                dialColor: 'white',
-                secondHandColor: 'red',
-                minuteHandColor: '#222222',
-                hourHandColor: '#222222',
-                showNumerals: true,
+                size: 100,  // initial size of dial
+                dialColor: 'white', // color of dial
+                secondHandColor: 'red', // color of the second hand
+                minuteHandColor: '#222222', // color of the minute hand
+                hourHandColor: '#222222', // color of the hour hand
+                showNumerals: true, // show the numbers next to dial
                 numerals: [ // shows hours 1-12
                     {1:1},
                     {2:2},
@@ -34,10 +34,10 @@
                     {11:11},
                     {12:12}
                 ],
-                sweepingMinutes: true,
-                sweepingSeconds: false,
-                numeralFont: 'arial',
-                brandFont: 'arial'
+                sweepingMinutes: true, // want the minutes to sweep (continuous)
+                sweepingSeconds: false, // want seconds to not be continuous, update every second
+                numeralFont: 'arial', // number font
+                brandFont: 'arial' // timezone + location font
             };
 
             settings = $.extend({}, defaults, options); //extend merges the properties
@@ -78,17 +78,17 @@
 
             // driaws the dial for the clock
             function drawDial(color){
-                var dialRadius,
+                var dialRadius, // radius of the dial, controls size of dial
                     i, // iterator
                     ang, // angle
                     sang, // sine of angle
                     cang, // cosine of angle
-                    sx, // sin x
-                    sy, // sin y
-                    ex, // arc x
-                    ey, // arc y
-                    nx, //
-                    ny,
+                    sx, // arc x (dial radius - dial radius/20)
+                    sy, // arc y (dial radius - dial radius/20)
+                    ex, // arc x (dial radius)
+                    ey, // arc y( dial radius)
+                    nx, // The x coordinate where to start painting the text for fillText method later
+                    ny, // The y coordinate where to start painting the text for fillText method later
                     textSize, // size of text
                     textWidth, // width of text for numeral
                     textWidth2, // width of text for time zone
@@ -96,12 +96,13 @@
 
                 dialRadius = parseInt(radius-(el.size/50), 10); // radius of dial
 
-                for (i=1; i<=60; i++) {
-                    ang=Math.PI/30*i;
-                    sang=Math.sin(ang); 
-                    cang=Math.cos(ang);
+                for (i=1; i<=60; i++) { // from 1 min to 60 min
+                    ang=Math.PI/30*i; // angle conversion
+                    sang=Math.sin(ang);  // sin of angle
+                    cang=Math.cos(ang); // cosine of angle
                     //hour marker/numeral
                     if (i % 5 === 0) { // checks is a multiple of 5 minutes
+                        // formats the design of the dial marks
                         ctx.lineWidth = parseInt(el.size/50,10); // width of the lines at each hour number (1 to 12)
                         sx = sang * (dialRadius - dialRadius/9); // angle of each line w/ respect to x
                         sy = cang * -(dialRadius - dialRadius/9); // angle of each line w/ respect to y
@@ -113,7 +114,7 @@
 
                         textSize = parseInt(el.size/13,10); // sets size of hour label nums
                         ctx.font = '100 ' + textSize + 'px ' + el.numeralFont; // font size
-                        ctx.fillStyle = color; 
+                        ctx.fillStyle = color;  // font color
 
                         if(el.showNumerals && el.numerals.length > 0){
                             el.numerals.map(function(numeral){  // creates the numbers in clock
@@ -128,11 +129,11 @@
                         }
                     //minute marker
                     } else { // adjust the formatting of the minute lines in the dial
-                        ctx.lineWidth = parseInt(el.size/100,10);
-                        sx = sang * (dialRadius - dialRadius/20);
-                        sy = cang * -(dialRadius - dialRadius/20);
-                        ex = sang * dialRadius;
-                        ey = cang * - dialRadius;
+                        ctx.lineWidth = parseInt(el.size/100,10); // line width for minute labels
+                        sx = sang * (dialRadius - dialRadius/20); // arc x for minute angle 
+                        sy = cang * -(dialRadius - dialRadius/20); // arc y for minute angle
+                        ex = sang * dialRadius; // arc x
+                        ey = cang * - dialRadius; // arc y
                     }
 
                     ctx.beginPath(); // clears prior path operations such as arc
