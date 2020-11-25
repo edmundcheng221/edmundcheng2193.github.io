@@ -1,0 +1,19 @@
+p {
+    margin: 20px;
+}
+body {
+    background-color: lightblue;
+}
+
+img {
+    display: flex;
+    max-width: 60%;
+    margin: auto;
+
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
