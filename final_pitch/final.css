@@ -1,6 +1,17 @@
 p {
     margin: 20px;
 }
+
+h4 {
+    display: flex;
+    justify-content: center;
+}
+
+#func {
+    margin: 20px;
+
+}
+
 body {
     background-color: lightblue;
 }
