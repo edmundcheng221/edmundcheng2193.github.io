@@ -40,3 +40,8 @@
     text-align: center;  
 }
 
+#hover-col:hover {
+    color: red;
+    background-color: cyan;
+}
+
