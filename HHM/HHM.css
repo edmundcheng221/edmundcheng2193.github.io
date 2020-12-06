@@ -1,5 +1,6 @@
 #override {
     background-color: rgb(98, 118, 163);
+    color: white;
 }
 
 #override0 {
@@ -13,8 +14,6 @@
 #bottom_bord {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    /* margin-left: 20px; */
-    /* margin-right: 20px; */
  }
 
  #company {
@@ -27,7 +26,6 @@
     justify-content: center;
 }
 
-
 #image {
     display: block;
     margin-left: auto;
@@ -36,5 +34,9 @@
     max-height: 600px;
   }
 
+#grid {
+    display: inline;
+    justify-content: center;
+    text-align: center;  
+}
 
-    
