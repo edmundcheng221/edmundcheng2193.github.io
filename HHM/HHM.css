@@ -45,3 +45,17 @@
     background-color: cyan;
 }
 
+#bottom {
+    display: inline-block;
+    color: white;
+    font-size: small;
+    justify-content: center;
+}
+
+#bottom:hover {
+    color: black;
+}
+
+.para {
+    text-align: center;
+  }
