@@ -38,6 +38,8 @@
     display: inline;
     justify-content: center;
     text-align: center;  
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #hover-col:hover {
