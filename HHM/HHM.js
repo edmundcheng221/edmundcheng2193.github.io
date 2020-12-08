@@ -23,4 +23,4 @@ function binary_search(arr, item){
 
 }
 
-console.log(random_binary_search([1, 5, 6, 8, 2], 6))
+console.log(binary_search([1, 5, 6, 8, 2], 6))
