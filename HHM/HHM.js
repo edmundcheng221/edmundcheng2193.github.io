@@ -1,6 +1,9 @@
-function random_binary_search(arr, item){
+function binary_search(arr, item){
     if (arr.length < 1) {
         return None } 
+    else if (arr.length === 1 && arr[0] === item) {
+        return arr[0]
+    }
     let begin = 0;
     let end = arr.length - 1;
     while (begin < end) {
