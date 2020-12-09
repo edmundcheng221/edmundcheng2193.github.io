@@ -60,9 +60,6 @@ color: red;
   font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
-  background: #fece0c;
-}
 
 .wrapper{
   position: absolute;
@@ -74,7 +71,6 @@ body{
   background: #fff;
   padding: 25px;
   border-radius: 5px;
-  /* box-shadow: 4px 4px 2px rgba(254,236,164,1);  */
 }
 
 .wrapper h2{
