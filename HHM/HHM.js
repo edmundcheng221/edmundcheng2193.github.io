@@ -1,6 +1,7 @@
 console.log('Hello World')
 
 
+
 function binary_search(arr, item){
     if (arr.length < 1) {
         return None } 
