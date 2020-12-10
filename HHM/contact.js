@@ -10,11 +10,21 @@ function validate(){
     
     let text;
 
-    if(name.length < 1){
+
+    if(name.length < 1) {
       text = "Please Enter valid Name";
       error_message.innerHTML = text;
       return false;
     }
+
+    if(name.includes('0') || name.includes('1') || name.includes('2') || name.includes('3') || 
+      name.includes('4') || name.includes('5') || name.includes('6') || 
+      name.includes('7') || name.includes('8') || name.includes('9')) {
+      text = "Please Enter valid Name";
+      error_message.innerHTML = text;
+      return false;
+    }
+
     
     if(subject.length < 1){
       text = "Please Enter Correct Subject";
@@ -34,7 +44,7 @@ function validate(){
       return false;
     }
 
-    if(message.length <= 2){
+    if(message.length < 1){
       text = "Please Enter a Message";
       error_message.innerHTML = text;
       return false;
