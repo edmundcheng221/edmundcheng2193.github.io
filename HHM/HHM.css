@@ -52,13 +52,30 @@
     justify-content: center;
     text-align: center;
 }
-
+/* 
 #grid {
     display: inline;
     justify-content: center;
     text-align: center;  
+    margin: auto;
+    width: 100%;
+
     margin-left: 20%;
     margin-right: 20%;
+} */
+
+#cat {
+    display: block;
+    text-align: center;
+    justify-content: center;
+
+}
+
+#grid {
+    display: flex;
+    margin: auto;
+    align-items: center;
+
 }
 
 #hover-col:hover {
