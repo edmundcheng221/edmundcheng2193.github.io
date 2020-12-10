@@ -5,6 +5,7 @@
 
 #override0 {
     background-color: white;
+
 }
 
 #top-bord {
@@ -52,17 +53,6 @@
     justify-content: center;
     text-align: center;
 }
-/* 
-#grid {
-    display: inline;
-    justify-content: center;
-    text-align: center;  
-    margin: auto;
-    width: 100%;
-
-    margin-left: 20%;
-    margin-right: 20%;
-} */
 
 #cat {
     display: block;
@@ -73,7 +63,9 @@
 
 #grid {
     display: flex;
-    margin: auto;
+    margin: auto; 
+    margin-left: auto;
+    margin-right: auto;
     align-items: center;
 
 }
