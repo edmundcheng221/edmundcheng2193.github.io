@@ -1,0 +1,47 @@
+#rights {
+    color: grey;
+}
+
+#footer {
+    background-color: navy;
+}
+
+#light {
+    background-image: url('../img/LA_Mountain.png');
+    
+}
+#third {
+    margin-left: 20%;
+}
+
+.navbar-custom { 
+    background-color: rgb(0,51,102); 
+    
+} 
+
+
+
+#color {
+    color: white;
+}
+
+#color:hover {
+    background-color: gray;
+}
+
+#color2:hover {
+    background-color: gray;
+}
+
+
+#color2 {
+    color: black;
+}
+
+#main {
+    background-color: rgb(0,51,102);
+}
+
+#navbarNav {
+    margin-left: 20%;
+} 
